@@ -42,6 +42,8 @@ public class CommonBehavior : MonoBehaviour {
 		isDashing = false;
 		isMoving = false;
 		isStunned = false;
+
+		// Initialize temp value
 		tmp_kickDuration = kickDuration;
 	}
 	
