@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 224666625246221320}
   - component: {fileID: 222363685806124076}
   - component: {fileID: 114773853232734886}
+  - component: {fileID: 114047363823324338}
   m_Layer: 5
   m_Name: BackgroundP2
   m_TagString: Untagged
@@ -843,6 +844,7 @@ GameObject:
   - component: {fileID: 224597443421182604}
   - component: {fileID: 222976782404978322}
   - component: {fileID: 114151453991214742}
+  - component: {fileID: 114953488941467204}
   m_Layer: 5
   m_Name: BackgroundP4
   m_TagString: Untagged
@@ -1075,6 +1077,7 @@ GameObject:
   - component: {fileID: 224036655343661472}
   - component: {fileID: 222406580671237514}
   - component: {fileID: 114826188157930340}
+  - component: {fileID: 114951920779080072}
   m_Layer: 5
   m_Name: BackgroundP1
   m_TagString: Untagged
@@ -1294,6 +1297,7 @@ GameObject:
   - component: {fileID: 224948648899259958}
   - component: {fileID: 222595432195265608}
   - component: {fileID: 114958249164608504}
+  - component: {fileID: 114913670395237628}
   m_Layer: 5
   m_Name: BackgroundP3
   m_TagString: Untagged
@@ -1724,6 +1728,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114047363823324338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345240620372010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf2a96d7bff0f834da27072a0f1eabe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kickIcon: {fileID: 114863185580611220}
+  sprintIcon: {fileID: 114001216036117424}
+  didPlayerSprint: 0
+  didPlayerKick: 0
+  kickCooldownTime: 0
+  sprintCooldownTime: 0
 --- !u!114 &114118901683494480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3401,6 +3422,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114913670395237628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884153602209130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf6f396e14e5ec4f850c26dbaeeb2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kickIcon: {fileID: 114311502051015942}
+  sprintIcon: {fileID: 114184105726413158}
+  didPlayerSprint: 0
+  didPlayerKick: 0
+  kickCooldownTime: 0
+  sprintCooldownTime: 0
 --- !u!114 &114924861600002756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3509,6 +3547,40 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114951920779080072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1770896885365400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b01b04c5016ef46a1828ca570f8830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kickIcon: {fileID: 114837684210629590}
+  sprintIcon: {fileID: 114924861600002756}
+  didPlayerSprint: 0
+  didPlayerKick: 0
+  kickCooldownTime: 0
+  sprintCooldownTime: 0
+--- !u!114 &114953488941467204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563713955760304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b225e04a38454b46a2ab444ce2ae9ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kickIcon: {fileID: 114314632470994924}
+  sprintIcon: {fileID: 114363229423863662}
+  didPlayerSprint: 0
+  didPlayerKick: 0
+  kickCooldownTime: 0
+  sprintCooldownTime: 0
 --- !u!114 &114954833363011312
 MonoBehaviour:
   m_ObjectHideFlags: 1

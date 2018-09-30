@@ -359,10 +359,7 @@ MonoBehaviour:
   teamBlue: []
   teamYellow: []
   teamGreen: []
-  teamRedScore: 0
-  teamBlueScore: 0
-  teamYellowScore: 0
-  teamGreenScore: 0
+  leader: []
   teamRedPlayer: {fileID: 0}
   teamBluePlayer: {fileID: 0}
   teamYellowPlayer: {fileID: 0}

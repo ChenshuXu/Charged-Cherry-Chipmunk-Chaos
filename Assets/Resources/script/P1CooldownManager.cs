@@ -5,21 +5,39 @@ using UnityEngine.UI;
 
 public class P1CooldownManager : MonoBehaviour {
 
-    public Image icon;
-    public bool coolingDown = false;
-    public float coolDownTime = 1f;
+    public Image kickIcon;
+    public Image sprintIcon;
+    //public bool kickButton;
+    //public bool sprintButton;
+    public bool didPlayerSprint;
+    public bool didPlayerKick;
+    //public float coolDownTime;
+    public float kickCooldownTime;
+    public float sprintCooldownTime;
 
-	void Start ()
+    void Start ()
     {
-        //coolingDown = GameObject.Find("chipmunk team A").GetComponent<PlayerBehavior>().isCounting;
-
+        didPlayerSprint = GameObject.Find("chipmunk team A").GetComponent<PlayerBehavior>().isSprinting;
+        didPlayerKick = GameObject.Find("chipmunk team A").GetComponent<PlayerBehavior>().isKicking;
+        kickCooldownTime = GameObject.Find("chipmunk team A").GetComponent<PlayerBehavior>().kickCoolDownTime;
+        sprintCooldownTime = GameObject.Find("chipmunk team A").GetComponent<PlayerBehavior>().sprintCoolDownTime;
     }
 
 	void Update ()
     {
-        if (coolingDown == true)
+        if (didPlayerSprint)
         {
-            icon.fillAmount -= 1.0f / coolDownTime * Time.deltaTime;
+            sprintIcon.fillAmount -= 1.0f / sprintCooldownTime * Time.deltaTime;
         }
-	}
+
+        if (didPlayerKick)
+        {
+            kickIcon.fillAmount -= 1.0f / kickCooldownTime * Time.deltaTime;
+        }
+
+        //if (didPlayerKick == true && kickButton)
+        //{
+        //    icon.fillAmount -= 1.0f / coolDownTime * Time.deltaTime;
+        //}
+    }
 }

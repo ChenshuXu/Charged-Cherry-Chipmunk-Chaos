@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour {
         timeLeft++;
         numTime.text = "10";
         numTime.enabled = true;
-        while (timeLeft > 0)
+        while (timeLeft > 1)
         {
             yield return new WaitForSeconds(1.0f);
             timeLeft--;
@@ -159,13 +159,13 @@ public class GameManager : MonoBehaviour {
 
         Explode();
         //Wait time (can be changed if you want) to show scores etc then resets
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.8f);
         teamLeft = 0;
         mtc.setState(2);
         round++;
         UpdateTeamMembers();
         UpdateTeamRemain();
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.8f);
         
         foreach (GameObject child in team)
         {
@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour {
             }
 
         }
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.8f);
         UpdateLeader();
         timeLeft = 10;
         CherryTimerReset();
@@ -190,7 +190,6 @@ public class GameManager : MonoBehaviour {
         {
             InitialGame();
         }
-
 
         StartCoroutine(StartCountdown());
     }
@@ -506,60 +505,6 @@ public class GameManager : MonoBehaviour {
      * 
      * 
      */
-
-    /**
-     * Start a new round when round finish
-     * Will check the each team chipmunk remain
-     * and initial a new round with those amount
-     **/
-    private void StartNewRound()
-    {
-        mtc.setState(2);
-        // check the chipmunks remain of each team at the end of the round
-        if (waitingTime == _waitingTime)
-        {
-            teamLeft = 0;
-            round++;
-        }
-            
-        waitingTime -= Time.deltaTime;
-
-        if (waitingTime >= 1f){
-            UpdateTeamMembers();
-            UpdateTeamRemain();
-        }
-
-        if (waitingTime <= 1f)
-        {
-            
-
-            foreach (GameObject child in team)
-            {
-                //Debug.Log(child.transform.childCount);
-                if (child.transform.childCount != 0)
-                {
-                    teamLeft++;
-                    TeamController teamController = child.GetComponent<TeamController>();
-                    teamController.DestroyAllChildren();
-                }
-                
-            }
-        }
-
-        if (waitingTime <= 0f)
-        {
-            waitingTime = _waitingTime;
-            if (teamLeft <= 3)
-            {
-                SceneManager.LoadScene(thisScene);
-            }
-            else
-            {
-                InitialGame();
-            }
-            
-        }
-    }
 
     private void Explode(){
         if (exploded){

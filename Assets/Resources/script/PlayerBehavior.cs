@@ -30,12 +30,14 @@ public class PlayerBehavior : MonoBehaviour {
 	private float tmp_sprintDuration;
 	private float tmp_sprintCoolDownTime;
 	public float sprintSpeed = 4.0f;
+    public bool isSprinting;
 
 	[Header("Kick settings")]
 	public float kickCoolDownTime = 1.0f;
 	public float kickRange = 8.0f;
 	public float kickForce = 2.5f;
 	private float tmp_kickCoolDownTime;
+    public bool isKicking;
 
 	[Header("Stun settings")]
 	public float stunDuration = 1.0f;
@@ -154,6 +156,7 @@ public class PlayerBehavior : MonoBehaviour {
 
 	private void Sprint(){
 		tmp_sprintDuration -= Time.deltaTime;
+        isSprinting = true;
 
 		if (tmp_sprintDuration < 0){
 			SetMovingMode(MovingMode.control);
@@ -162,9 +165,12 @@ public class PlayerBehavior : MonoBehaviour {
 		Vector3 vel = _rigid.velocity;
 		vel.Normalize();
 		_rigid.AddForce(vel * sprintSpeed, ForceMode.VelocityChange);
+        isSprinting = false;
 	}
 
 	private void Kick(){
+        isKicking = true;
+
 		_common.SetAnimationMode(CommonBehavior.AnimationMode.kicking);
 		for (float angle = -35; angle < 35; angle++) {
 			float x = Mathf.Sin(angle);
@@ -192,6 +198,8 @@ public class PlayerBehavior : MonoBehaviour {
 			}
 		}
 		tmp_kickCoolDownTime = kickCoolDownTime;
+
+        isKicking = false;
 	}
 
 	/*
@@ -266,45 +274,6 @@ public class PlayerBehavior : MonoBehaviour {
 				_common.SetAnimationMode(CommonBehavior.AnimationMode.stunned);
 				break;
 		}
-	}
-
-	/*
-	 * start a explosion to explode others
-	 */
-	public void Explode(){
-		// raycast may hit an obstacle for many times in a single explosion
-		// so we need a list to prevent duplicated hit
-		List<GameObject> hitsList = new List<GameObject>();
-
-		// start a raycast from the position of player
-		for (int angle = 0; angle < 360; angle += 1) {
-			float x = Mathf.Sin(angle);
-			float y = Mathf.Cos(angle);
-			Vector3 dir = new Vector3(x, 0, y);
-			RaycastHit hit;
-			if (Physics.Raycast(transform.position, dir, out hit, explisionRadius)) {
-				//RaycastHit hit = hits[i];
-				GameObject obj = hit.collider.gameObject;
-
-				// kill other players
-				if (obj.GetComponent<PlayerBehavior>() || obj.GetComponent<NPCBehavior>()) {
-					hitsList.Add(obj);
-				}
-			}
-		}
-
-		foreach (GameObject obj in hitsList) {
-			// kill players
-			if (obj.GetComponent<PlayerBehavior>().enabled) {
-				obj.GetComponent<PlayerBehavior>().BeExploded();
-			}
-			// kill NPCs
-			else if (obj.GetComponent<NPCBehavior>().enabled) {
-				obj.GetComponent<NPCBehavior>().BeExploded();
-			}
-		}
-
-        BeExploded();
 	}
 
 	/*
